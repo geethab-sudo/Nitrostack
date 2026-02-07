@@ -1,0 +1,116 @@
+{
+  "version": "1.0.0",
+  "widgets": [
+    {
+      "uri": "/calculator-result",
+      "name": "Calculator Result",
+      "description": "Displays the result of a calculation with operation details",
+      "examples": [
+        {
+          "name": "Addition Example",
+          "description": "Shows the result of adding 5 + 3",
+          "data": {
+            "operation": "add",
+            "a": 5,
+            "b": 3,
+            "result": 8,
+            "expression": "5 + 3 = 8"
+          }
+        },
+        {
+          "name": "Multiplication Example",
+          "description": "Shows the result of multiplying 6 × 7",
+          "data": {
+            "operation": "multiply",
+            "a": 6,
+            "b": 7,
+            "result": 42,
+            "expression": "6 × 7 = 42"
+          }
+        },
+        {
+          "name": "Division Example",
+          "description": "Shows the result of dividing 20 ÷ 4",
+          "data": {
+            "operation": "divide",
+            "a": 20,
+            "b": 4,
+            "result": 5,
+            "expression": "20 ÷ 4 = 5"
+          }
+        }
+      ],
+      "tags": ["calculator", "math", "result"]
+    },
+    {
+      "uri": "/insurance-search-dropdown",
+      "name": "Insurance Search Dropdown",
+      "description": "Searchable dropdown list of insurance names with auto-complete functionality",
+      "examples": [
+        {
+          "name": "Search Insurance Names",
+          "description": "Shows a searchable dropdown with insurance names",
+          "data": {
+            "success": true,
+            "count": 5,
+            "searchQuery": "health",
+            "insuranceNames": [
+              {
+                "name": "Health Insurance Premium",
+                "id": "507f1f77bcf86cd799439011"
+              },
+              {
+                "name": "Health Plus Plan",
+                "id": "507f1f77bcf86cd799439012"
+              },
+              {
+                "name": "Family Health Insurance",
+                "id": "507f1f77bcf86cd799439013"
+              }
+            ]
+          }
+        }
+      ],
+      "tags": ["insurance", "search", "dropdown", "autocomplete"]
+    },
+    {
+      "uri": "/insurance-suggestion",
+      "name": "Insurance Suggestion",
+      "description": "Displays personalized insurance plan suggestions based on user profile (age, salary, family members, health conditions)",
+      "examples": [
+        {
+          "name": "Family Health Insurance Suggestion",
+          "description": "Shows suggested insurance plans for a family with health conditions",
+          "data": {
+            "success": true,
+            "userProfile": {
+              "age": 35,
+              "salary": 500000,
+              "familyMembers": 4,
+              "deficiencies": ["diabetes", "hypertension"]
+            },
+            "suggestedPlans": [
+              {
+                "_id": "507f1f77bcf86cd799439011",
+                "name": "Family Health Insurance Premium",
+                "type": "Health",
+                "premium": 25000,
+                "coverage": 500000,
+                "matchScore": 95,
+                "reasons": [
+                  "Covers family members",
+                  "Includes pre-existing conditions",
+                  "Affordable premium"
+                ]
+              }
+            ],
+            "recommendations": "Based on your profile:\n- We recommend family insurance plans covering 4 members.\n- Consider plans that cover pre-existing conditions: diabetes, hypertension.\n- Affordable premium range: up to 25000 per year (5% of salary)."
+          }
+        }
+      ],
+      "tags": ["insurance", "suggestion", "recommendation", "profile"]
+    }
+  ],
+  "generatedAt": "2025-01-01T00:00:00.000Z"
+}
+

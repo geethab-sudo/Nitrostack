@@ -1,9 +1,10 @@
 # Data Population Scripts
 
 ## Overview
-This directory contains scripts to populate MongoDB collections with sample data:
+This directory contains scripts to populate and update MongoDB collections with sample data:
 - `populate-insurance-data.js` - Populates the `Insurance` collection with insurance plan data
 - `populate-users-data.js` - Populates the `Users` collection with user profile data
+- `update-insurance-policy-numbers.js` - Updates existing insurance documents by adding policy numbers
 
 ## Usage
 
@@ -19,7 +20,21 @@ node scripts/populate-insurance-data.js
 node scripts/populate-users-data.js
 ```
 
-Both scripts support environment variables:
+### Update Insurance Policy Numbers
+
+This script adds policy numbers to existing insurance documents that don't have them:
+
+```bash
+node scripts/update-insurance-policy-numbers.js
+```
+
+The script will:
+- Find all documents without policy numbers
+- Generate unique policy numbers based on provider and type
+- Update documents with the new policy numbers
+- Display a summary of updates
+
+All scripts support environment variables:
 - `MONGODB_URI` - MongoDB connection string (default: `mongodb://localhost:27017/`)
 - `MONGODB_DATABASE_NAME` - Database name (default: `Insurance`)
 
@@ -36,6 +51,7 @@ Each insurance plan document contains the following fields:
 - `coverage` (number): Coverage amount
 
 ### Optional Fields
+- `policyNumber` (string): Unique policy number (format: `POL-{PROVIDER}-{TYPE}-{NUMBER}`)
 - `minAge` (number): Minimum age requirement
 - `maxAge` (number): Maximum age limit
 - `familyCoverage` (boolean): Whether plan covers family members

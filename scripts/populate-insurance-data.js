@@ -11,6 +11,25 @@ const MONGODB_URI = 'mongodb://localhost:27017/';
 const DATABASE_NAME = 'Insurance';
 const COLLECTION_NAME = 'Insurance';
 
+/**
+ * Generate a unique policy number based on provider and type
+ */
+function generatePolicyNumber(provider, type, index) {
+  // Create provider code (first 3-4 letters)
+  const providerCode = provider
+    .replace(/\s+/g, '')
+    .substring(0, 4)
+    .toUpperCase();
+  
+  // Create type code (first 2-3 letters)
+  const typeCode = type.substring(0, 3).toUpperCase();
+  
+  // Generate sequential number with padding
+  const number = String(index + 1).padStart(4, '0');
+  
+  return `POL-${providerCode}-${typeCode}-${number}`;
+}
+
 const sampleInsurancePlans = [
   // Health Insurance Plans
   {
@@ -18,6 +37,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'HDFC ERGO',
+    policyNumber: 'POL-HDFC-HEA-0001',
     minAge: 18,
     maxAge: 65,
     premium: 25000,
@@ -34,6 +54,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'ICICI Lombard',
+    policyNumber: 'POL-ICIC-HEA-0002',
     minAge: 18,
     maxAge: 70,
     premium: 12000,
@@ -50,6 +71,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'Apollo Munich',
+    policyNumber: 'POL-APOL-HEA-0003',
     minAge: 60,
     maxAge: 80,
     premium: 35000,
@@ -66,6 +88,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'Bajaj Allianz',
+    policyNumber: 'POL-BAJA-HEA-0004',
     minAge: 21,
     maxAge: 40,
     premium: 8000,
@@ -82,6 +105,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'Star Health',
+    policyNumber: 'POL-STAR-HEA-0005',
     minAge: 18,
     maxAge: 45,
     premium: 30000,
@@ -98,6 +122,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'TATA AIG',
+    policyNumber: 'POL-TATA-HEA-0006',
     minAge: 25,
     maxAge: 65,
     premium: 15000,
@@ -114,6 +139,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'Aditya Birla Health',
+    policyNumber: 'POL-ADIT-HEA-0007',
     minAge: 18,
     maxAge: 65,
     premium: 40000,
@@ -130,6 +156,7 @@ const sampleInsurancePlans = [
     type: 'Health',
     category: 'Health',
     provider: 'Oriental Insurance',
+    policyNumber: 'POL-ORIE-HEA-0008',
     minAge: 18,
     maxAge: 60,
     premium: 5000,
@@ -148,6 +175,7 @@ const sampleInsurancePlans = [
     type: 'Life',
     category: 'Life',
     provider: 'LIC',
+    policyNumber: 'POL-LIC-LIF-0009',
     minAge: 18,
     maxAge: 60,
     premium: 12000,
@@ -164,6 +192,7 @@ const sampleInsurancePlans = [
     type: 'Life',
     category: 'Life',
     provider: 'HDFC Life',
+    policyNumber: 'POL-HDFC-LIF-0010',
     minAge: 25,
     maxAge: 55,
     premium: 50000,
@@ -180,6 +209,7 @@ const sampleInsurancePlans = [
     type: 'Life',
     category: 'Life',
     provider: 'ICICI Prudential',
+    policyNumber: 'POL-ICIC-LIF-0011',
     minAge: 25,
     maxAge: 50,
     premium: 20000,
@@ -198,6 +228,7 @@ const sampleInsurancePlans = [
     type: 'Accident',
     category: 'Accident',
     provider: 'New India Assurance',
+    policyNumber: 'POL-NEWI-ACC-0012',
     minAge: 18,
     maxAge: 70,
     premium: 2000,
@@ -214,6 +245,7 @@ const sampleInsurancePlans = [
     type: 'Accident',
     category: 'Accident',
     provider: 'United India Insurance',
+    policyNumber: 'POL-UNIT-ACC-0013',
     minAge: 18,
     maxAge: 65,
     premium: 5000,
@@ -232,6 +264,7 @@ const sampleInsurancePlans = [
     type: 'Travel',
     category: 'Travel',
     provider: 'Reliance General',
+    policyNumber: 'POL-RELI-TRA-0014',
     minAge: 0,
     maxAge: 80,
     premium: 3000,
@@ -250,6 +283,7 @@ const sampleInsurancePlans = [
     type: 'Motor',
     category: 'Motor',
     provider: 'Bajaj Allianz',
+    policyNumber: 'POL-BAJA-MOT-0015',
     minAge: 18,
     maxAge: 70,
     premium: 15000,

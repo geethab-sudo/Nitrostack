@@ -1,14 +1,14 @@
 {
   "pages": {
-    "/insurance-search-dropdown/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/insurance-search-dropdown/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/layout.js"
+    ],
+    "/insurance-search-dropdown/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/insurance-search-dropdown/page.js"
     ],
     "/insurance-suggestion/page": [
       "static/chunks/webpack.js",

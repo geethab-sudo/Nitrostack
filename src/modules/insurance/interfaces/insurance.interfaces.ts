@@ -35,6 +35,15 @@ export interface ListInsuranceInput {
 }
 
 /**
+ * Simplified insurance item for listing
+ */
+export interface InsuranceListItem {
+  name: string;
+  description: string;
+  policyId: string;
+}
+
+/**
  * Response from list_insurance tool
  */
 export interface ListInsuranceResponse {
@@ -43,33 +52,7 @@ export interface ListInsuranceResponse {
   total: number;
   limit: number;
   skip: number;
-  insurance: InsurancePlan[];
-}
-
-/**
- * Input for search_insurance_names tool
- */
-export interface SearchInsuranceNamesInput {
-  searchQuery?: string;
-  limit?: number;
-}
-
-/**
- * Insurance name with ID
- */
-export interface InsuranceName {
-  name: string;
-  id: string;
-}
-
-/**
- * Response from search_insurance_names tool
- */
-export interface SearchInsuranceNamesResponse {
-  success: boolean;
-  count: number;
-  searchQuery: string;
-  insuranceNames: InsuranceName[];
+  insurance: InsuranceListItem[];
 }
 
 /**
@@ -163,10 +146,10 @@ export interface FamilyMember {
 export interface User {
   _id?: string;
   name: string;
-  age: number;
-  salary: number;
-  designation: string;
-  familyMembers: FamilyMember[];
+  age?: number;
+  salary?: number;
+  designation?: string;
+  familyMembers?: FamilyMember[];
   email: string; // Required field - primary identifier
   phone?: string;
   address?: string;
@@ -187,6 +170,7 @@ export interface Booking {
   _id?: string;
   userId: string; // Reference to User _id
   insurancePlanId: string; // Reference to InsurancePlan _id
+  policyNumber?: string; // Policy number from insurance plan
   status: BookingStatus;
   premium: number;
   coverageAmount: number;
@@ -202,11 +186,13 @@ export interface Booking {
 }
 
 /**
- * Input for book_insurance tool
+ * Input for book_insurance_with_user tool
  */
-export interface BookInsuranceInput {
-  userId: string;
-  schemeId: string;
+export interface BookInsuranceWithUserInput {
+  policyNumber: string;
+  email: string;
+  name: string;
+  phoneNumber: string;
   paymentMethod?: string;
   startDate?: string;
   years?: number;
@@ -215,9 +201,28 @@ export interface BookInsuranceInput {
 }
 
 /**
- * Response from book_insurance tool
+ * Response from book_insurance_with_user tool
  */
-export interface BookInsuranceResponse {
+export interface BookInsuranceWithUserResponse {
   success: boolean;
   booking: Booking;
+  user: User;
+  isNewUser: boolean;
+}
+
+/**
+ * Input for list_booking_status_by_email tool
+ */
+export interface ListBookingStatusByEmailInput {
+  email: string;
+}
+
+/**
+ * Response from list_booking_status_by_email tool
+ */
+export interface ListBookingStatusByEmailResponse {
+  success: boolean;
+  user: User;
+  bookings: Booking[];
+  count: number;
 }

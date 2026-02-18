@@ -2,47 +2,6 @@
   "version": "1.0.0",
   "widgets": [
     {
-      "uri": "/calculator-result",
-      "name": "Calculator Result",
-      "description": "Displays the result of a calculation with operation details",
-      "examples": [
-        {
-          "name": "Addition Example",
-          "description": "Shows the result of adding 5 + 3",
-          "data": {
-            "operation": "add",
-            "a": 5,
-            "b": 3,
-            "result": 8,
-            "expression": "5 + 3 = 8"
-          }
-        },
-        {
-          "name": "Multiplication Example",
-          "description": "Shows the result of multiplying 6 × 7",
-          "data": {
-            "operation": "multiply",
-            "a": 6,
-            "b": 7,
-            "result": 42,
-            "expression": "6 × 7 = 42"
-          }
-        },
-        {
-          "name": "Division Example",
-          "description": "Shows the result of dividing 20 ÷ 4",
-          "data": {
-            "operation": "divide",
-            "a": 20,
-            "b": 4,
-            "result": 5,
-            "expression": "20 ÷ 4 = 5"
-          }
-        }
-      ],
-      "tags": ["calculator", "math", "result"]
-    },
-    {
       "uri": "/insurance-search-dropdown",
       "name": "Insurance Search Dropdown",
       "description": "Searchable dropdown list of insurance names with auto-complete functionality",
@@ -109,6 +68,128 @@
         }
       ],
       "tags": ["insurance", "suggestion", "recommendation", "profile"]
+    },
+    {
+      "uri": "/insurance-list",
+      "name": "Insurance List",
+      "description": "Displays a list of insurance plans with name, description, and policy ID",
+      "examples": [
+        {
+          "name": "Insurance Plans List",
+          "description": "Shows a list of available insurance plans",
+          "data": {
+            "success": true,
+            "count": 3,
+            "total": 10,
+            "limit": 10,
+            "skip": 0,
+            "insurance": [
+              {
+                "name": "Health Insurance Premium",
+                "description": "Comprehensive health coverage for individuals and families",
+                "policyId": "POL-HDFC-HEA-0002"
+              },
+              {
+                "name": "Life Insurance Plan",
+                "description": "Term life insurance with flexible coverage options",
+                "policyId": "POL-ICICI-LIF-0005"
+              },
+              {
+                "name": "Travel Insurance",
+                "description": "International travel coverage with medical and trip protection",
+                "policyId": "POL-AXIS-TRV-0008"
+              }
+            ]
+          }
+        }
+      ],
+      "tags": ["insurance", "list", "plans", "policy"]
+    },
+    {
+      "uri": "/insurance-booking",
+      "name": "Insurance Booking",
+      "description": "Displays booking confirmation details after booking an insurance plan, including user information, booking details, payment status, and coverage period",
+      "examples": [
+        {
+          "name": "Successful Booking Confirmation",
+          "description": "Shows booking confirmation for a new user with payment details",
+          "data": {
+            "success": true,
+            "isNewUser": true,
+            "user": {
+              "_id": "507f1f77bcf86cd799439011",
+              "name": "John Doe",
+              "email": "user@example.com",
+              "phone": "+91-9876543210"
+            },
+            "booking": {
+              "_id": "507f1f77bcf86cd799439013",
+              "userId": "507f1f77bcf86cd799439011",
+              "insurancePlanId": "507f1f77bcf86cd799439012",
+              "policyNumber": "POL-HDFC-HEA-0002",
+              "status": "pending",
+              "premium": 25000,
+              "coverageAmount": 500000,
+              "paymentStatus": "paid",
+              "paymentMethod": "credit_card",
+              "transactionId": "TXN-123456789",
+              "startDate": "2024-01-01",
+              "endDate": "2024-12-31"
+            }
+          }
+        }
+      ],
+      "tags": ["insurance", "booking", "confirmation", "payment", "user"]
+    },
+    {
+      "uri": "/booking-status-list",
+      "name": "Booking Status List",
+      "description": "Displays all booking statuses for a user, with each booking displayed in a separate card showing status, premium, coverage, payment details, and coverage period",
+      "examples": [
+        {
+          "name": "User Booking History",
+          "description": "Shows all bookings for a user with their status and details",
+          "data": {
+            "success": true,
+            "user": {
+              "_id": "507f1f77bcf86cd799439011",
+              "name": "John Doe",
+              "email": "user@example.com",
+              "phone": "+91-9876543210"
+            },
+            "bookings": [
+              {
+                "_id": "507f1f77bcf86cd799439013",
+                "userId": "507f1f77bcf86cd799439011",
+                "insurancePlanId": "507f1f77bcf86cd799439012",
+                "policyNumber": "POL-HDFC-HEA-0002",
+                "status": "confirmed",
+                "premium": 25000,
+                "coverageAmount": 500000,
+                "paymentStatus": "paid",
+                "paymentMethod": "credit_card",
+                "transactionId": "TXN-123456789",
+                "startDate": "2024-01-01",
+                "endDate": "2024-12-31",
+                "createdAt": "2024-01-01T00:00:00.000Z"
+              },
+              {
+                "_id": "507f1f77bcf86cd799439014",
+                "userId": "507f1f77bcf86cd799439011",
+                "insurancePlanId": "507f1f77bcf86cd799439015",
+                "policyNumber": "POL-ICICI-LIF-0005",
+                "status": "pending",
+                "premium": 15000,
+                "coverageAmount": 1000000,
+                "paymentStatus": "pending",
+                "createdAt": "2024-02-01T00:00:00.000Z"
+              }
+            ],
+            "count": 2
+          }
+        }
+      ],
+      "tags": ["insurance", "booking", "status", "history", "user"]
     }
   ],
   "generatedAt": "2025-01-01T00:00:00.000Z"

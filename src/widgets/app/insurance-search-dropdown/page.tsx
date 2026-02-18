@@ -103,30 +103,36 @@ export default function InsuranceSearchDropdown() {
       maxWidth: '600px',
       boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
     }}>
+      {/* Header */}
       <div style={{
-        marginBottom: '16px',
+        marginBottom: '24px',
         display: 'flex',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        gap: '12px'
+        flexWrap: 'wrap',
+        gap: '16px'
       }}>
-        <span style={{ fontSize: '24px' }}>🔍</span>
         <div>
-          <h3 style={{ 
-            margin: 0, 
-            fontSize: '18px', 
-            fontWeight: '600',
-            color: textColor 
+          <h2 style={{
+            fontSize: '24px',
+            fontWeight: '700',
+            margin: '0 0 8px 0',
+            background: isDark
+              ? 'linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%)'
+              : 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
           }}>
             Insurance Search
-          </h3>
-          <p style={{ 
-            margin: '4px 0 0 0', 
-            fontSize: '14px', 
+          </h2>
+          <div style={{
+            fontSize: '14px',
             color: isDark ? 'rgba(255,255,255,0.6)' : 'rgba(0,0,0,0.6)'
           }}>
             {data.count} insurance{data.count !== 1 ? 's' : ''} found
             {data.searchQuery && ` for "${data.searchQuery}"`}
-          </p>
+          </div>
         </div>
       </div>
 
@@ -263,8 +269,11 @@ export default function InsuranceSearchDropdown() {
         </div>
       )}
 
+      {/* Footer */}
       <div style={{
-        marginTop: '16px',
+        marginTop: '24px',
+        paddingTop: '16px',
+        borderTop: `1px solid ${borderColor}`,
         fontSize: '12px',
         textAlign: 'center',
         color: isDark ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.5)'

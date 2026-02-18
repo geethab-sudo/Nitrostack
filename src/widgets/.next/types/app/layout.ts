@@ -1,4 +1,4 @@
-// File: /Users/wekanadmin/NitInsrance/src/widgets/app/layout.tsx
+// File: /Users/wekanadmin/InsureMate/src/widgets/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

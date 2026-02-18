@@ -444,13 +444,15 @@ The tool uses caching and optimized database queries for performance.`,
     name: 'book_insurance_with_user',
     description: `Book an insurance plan when user selects a policy. Creates or updates user account and creates a booking record.
 
+IMPORTANT: Before calling this tool, you MUST ask the user for their email address if it's not already available. The email is a REQUIRED field and cannot be omitted.
+
 CONDITIONS AND CRITERIA:
 - Policy Validation:
   * policyNumber (REQUIRED): Must exist in Insurance collection. If not found, booking fails with error.
   * Premium and coverage amounts are automatically extracted from the insurance plan.
 
 - User Account Management:
-  * email (REQUIRED): Must be valid email format (validated with regex). Used as primary identifier.
+  * email (REQUIRED): Must be valid email format (validated with regex). Used as primary identifier. YOU MUST ASK THE USER FOR THEIR EMAIL if it's not provided.
   * If user exists: Updates user with new name and phoneNumber
   * If user doesn't exist: Creates new user account with provided details
   * name (REQUIRED): User's full name, minimum 1 character
@@ -477,7 +479,7 @@ CONDITIONS AND CRITERIA:
 All input strings are sanitized and validated before processing.`,
     inputSchema: z.object({
       policyNumber: z.string().describe('Insurance policy number (e.g., "POL-HDFC-HEA-0002")'),
-      email: z.string().email().describe('User email address'),
+      email: z.string().email().describe('User email address (REQUIRED - you must ask the user for their email if not provided)'),
       name: z.string().min(1).describe('User full name'),
       phoneNumber: z.string().describe('User phone number'),
       paymentMethod: z.string().optional().describe('Payment method (e.g., "credit_card", "debit_card", "upi", "bank_transfer")'),

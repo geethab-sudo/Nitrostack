@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsureMate Project Analysis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .tech-card {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tech-card h4 {
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+        
+        .collection-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #764ba2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .collection-card h4 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+        
+        .field-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .field-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .field-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .field-name {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .field-type {
+            color: #888;
+            font-style: italic;
+        }
+        
+        .tool-card {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .tool-card h4 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+        
+        .query-box {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .architecture-diagram {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .layer {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .cache-info {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 15px 0;
+        }
+        
+        .cache-info h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .workflow {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        
+        .workflow-step {
+            background: #e7f3ff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #2196F3;
+            position: relative;
+            padding-left: 50px;
+        }
+        
+        .workflow-step::before {
+            content: counter(step-counter);
+            counter-increment: step-counter;
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            background: #2196F3;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .workflow {
+            counter-reset: step-counter;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+        
+        .badge-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .badge-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .badge-warning {
+            background: #ffc107;
+            color: #333;
+        }
+        
+        .badge-info {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .index-list {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .index-list li {
+            padding: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        table th {
+            background: #667eea;
+            color: white;
+        }
+        
+        table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 InsureMate Project Analysis</h1>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">
+            Comprehensive Insurance Management System - Technical Documentation
+        </p>
+
+        <!-- Technology Stack -->
+        <div class="section">
+            <h2>📚 Technology Stack</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h4>Runtime & Language</h4>
+                    <ul>
+                        <li><strong>Node.js</strong> - JavaScript runtime</li>
+                        <li><strong>TypeScript</strong> - Type-safe JavaScript</li>
+                        <li><strong>ES2022</strong> - Modern JavaScript features</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h4>Framework & Core</h4>
+                    <ul>
+                        <li><strong>NitroStack</strong> - MCP server framework</li>
+                        <li><strong>@nitrostack/core</strong> - Core framework</li>
+                        <li><strong>@nitrostack/cli</strong> - CLI tools</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h4>Database</h4>
+                    <ul>
+                        <li><strong>MongoDB</strong> - NoSQL database</li>
+                        <li><strong>mongodb</strong> (v7.1.0) - Official driver</li>
+                        <li><strong>Connection Pooling</strong> - Optimized connections</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h4>Validation & Schema</h4>
+                    <ul>
+                        <li><strong>Zod</strong> (v3.22.4) - Schema validation</li>
+                        <li><strong>TypeScript Interfaces</strong> - Type safety</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h4>UI Framework</h4>
+                    <ul>
+                        <li><strong>Next.js</strong> - React framework for widgets</li>
+                        <li><strong>React</strong> - UI components</li>
+                        <li><strong>TypeScript</strong> - Widget type safety</li>
+                    </ul>
+                </div>
+                <div class="tech-card">
+                    <h4>Utilities</h4>
+                    <ul>
+                        <li><strong>dotenv</strong> - Environment variables</li>
+                        <li><strong>In-memory Cache</strong> - Performance optimization</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Architecture -->
+        <div class="section">
+            <h2>🏗️ Architecture</h2>
+            <div class="architecture-diagram">
+                <h3>System Architecture Overview</h3>
+                <div class="layer">
+                    <h4>📱 Presentation Layer</h4>
+                    <ul>
+                        <li><strong>Next.js Widgets</strong> - React-based UI components</li>
+                        <li>Widgets: insurance-list, insurance-suggestion, insurance-booking, booking-status-list</li>
+                        <li>Hot module replacement for development</li>
+                    </ul>
+                </div>
+                <div class="layer">
+                    <h4>🔧 Application Layer</h4>
+                    <ul>
+                        <li><strong>NitroStack MCP Server</strong> - Model Context Protocol server</li>
+                        <li><strong>Tools</strong> - Business logic endpoints (list_insurance, suggest_insurance_plan, etc.)</li>
+                        <li><strong>Resources</strong> - Data exposure endpoints</li>
+                        <li><strong>Prompts</strong> - Conversation templates</li>
+                    </ul>
+                </div>
+                <div class="layer">
+                    <h4>💼 Business Logic Layer</h4>
+                    <ul>
+                        <li><strong>InsuranceTools</strong> - Main tool controller</li>
+                        <li><strong>InsuranceQueryBuilderService</strong> - MongoDB query construction</li>
+                        <li><strong>InsuranceScoringService</strong> - Plan matching algorithm</li>
+                        <li><strong>InsuranceRecommendationService</strong> - Recommendation generation</li>
+                        <li><strong>CacheService</strong> - In-memory caching</li>
+                        <li><strong>MetricsService</strong> - Performance monitoring</li>
+                    </ul>
+                </div>
+                <div class="layer">
+                    <h4>💾 Data Access Layer</h4>
+                    <ul>
+                        <li><strong>MongoDBService</strong> - Database connection management</li>
+                        <li><strong>Connection Pooling</strong> - Efficient connection reuse</li>
+                        <li><strong>Index Management</strong> - Automatic index creation</li>
+                        <li><strong>Retry Logic</strong> - Automatic reconnection</li>
+                    </ul>
+                </div>
+                <div class="layer">
+                    <h4>🗄️ Data Layer</h4>
+                    <ul>
+                        <li><strong>MongoDB Database</strong> - Document storage</li>
+                        <li><strong>Collections</strong> - Insurance, Users, Bookings</li>
+                        <li><strong>Indexes</strong> - Optimized query performance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collections -->
+        <div class="section">
+            <h2>📦 MongoDB Collections</h2>
+            
+            <div class="collection-card">
+                <h4>1. Insurance Collection <span class="badge badge-primary">Primary</span></h4>
+                <p><strong>Collection Name:</strong> <code>Insurance</code> (configurable via MONGODB_COLLECTION_NAME)</p>
+                <p><strong>Purpose:</strong> Stores all insurance plan information</p>
+                <h5>Document Structure:</h5>
+                <ul class="field-list">
+                    <li><span class="field-name">_id</span> <span class="field-type">(ObjectId/String)</span> - Unique identifier</li>
+                    <li><span class="field-name">name</span> <span class="field-type">(String, Required)</span> - Insurance plan name</li>
+                    <li><span class="field-name">type</span> <span class="field-type">(String, Optional)</span> - Type: Health, Life, Accident, Travel, Motor</li>
+                    <li><span class="field-name">category</span> <span class="field-type">(String, Optional)</span> - Plan category</li>
+                    <li><span class="field-name">premium</span> <span class="field-type">(Number, Required)</span> - Annual premium amount</li>
+                    <li><span class="field-name">coverage</span> <span class="field-type">(Number, Optional)</span> - Coverage amount</li>
+                    <li><span class="field-name">policyNumber</span> <span class="field-type">(String, Optional, Unique)</span> - Policy identifier (e.g., "POL-HDFC-HEA-0002")</li>
+                    <li><span class="field-name">minAge</span> <span class="field-type">(Number, Optional)</span> - Minimum age requirement</li>
+                    <li><span class="field-name">maxAge</span> <span class="field-type">(Number, Optional)</span> - Maximum age limit</li>
+                    <li><span class="field-name">familyCoverage</span> <span class="field-type">(Boolean, Optional)</span> - Whether plan covers family</li>
+                    <li><span class="field-name">maxFamilyMembers</span> <span class="field-type">(Number, Optional)</span> - Maximum family members covered</li>
+                    <li><span class="field-name">coversPreExisting</span> <span class="field-type">(Boolean, Optional)</span> - Covers pre-existing conditions</li>
+                    <li><span class="field-name">coveredConditions</span> <span class="field-type">(Array[String], Optional)</span> - List of covered conditions</li>
+                    <li><span class="field-name">provider</span> <span class="field-type">(String, Optional)</span> - Insurance provider name</li>
+                    <li><span class="field-name">description</span> <span class="field-type">(String, Optional)</span> - Plan description</li>
+                </ul>
+                <h5>Indexes:</h5>
+                <div class="index-list">
+                    <ul>
+                        <li>Text index on <code>name</code> for search operations</li>
+                        <li>Index on <code>premium</code> for affordability filtering</li>
+                        <li>Compound index on <code>minAge</code> and <code>maxAge</code> for age filtering</li>
+                        <li>Index on <code>familyCoverage</code> and <code>maxFamilyMembers</code> for family filtering</li>
+                        <li>Index on <code>coversPreExisting</code> for condition filtering</li>
+                        <li>Unique sparse index on <code>policyNumber</code> to prevent duplicates</li>
+                        <li>Compound index on <code>premium, familyCoverage, minAge, maxAge</code> for common queries</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="collection-card">
+                <h4>2. Users Collection <span class="badge badge-success">Secondary</span></h4>
+                <p><strong>Collection Name:</strong> <code>Users</code></p>
+                <p><strong>Purpose:</strong> Stores user account information</p>
+                <h5>Document Structure:</h5>
+                <ul class="field-list">
+                    <li><span class="field-name">_id</span> <span class="field-type">(ObjectId/String)</span> - Unique identifier</li>
+                    <li><span class="field-name">email</span> <span class="field-type">(String, Required, Unique)</span> - Primary identifier</li>
+                    <li><span class="field-name">name</span> <span class="field-type">(String, Required)</span> - User's full name</li>
+                    <li><span class="field-name">phone</span> <span class="field-type">(String, Optional)</span> - Phone number</li>
+                    <li><span class="field-name">age</span> <span class="field-type">(Number, Optional)</span> - User age</li>
+                    <li><span class="field-name">salary</span> <span class="field-type">(Number, Optional)</span> - Annual salary</li>
+                    <li><span class="field-name">designation</span> <span class="field-type">(String, Optional)</span> - Job designation</li>
+                    <li><span class="field-name">address</span> <span class="field-type">(String, Optional)</span> - User address</li>
+                    <li><span class="field-name">familyMembers</span> <span class="field-type">(Array[FamilyMember], Optional)</span> - Family member details</li>
+                    <li><span class="field-name">createdAt</span> <span class="field-type">(Date, Optional)</span> - Creation timestamp</li>
+                    <li><span class="field-name">updatedAt</span> <span class="field-type">(Date, Optional)</span> - Last update timestamp</li>
+                </ul>
+                <h5>Indexes:</h5>
+                <div class="index-list">
+                    <ul>
+                        <li>Unique index on <code>email</code> (primary key)</li>
+                        <li>Text index on <code>name</code> for search</li>
+                        <li>Index on <code>age</code> for filtering</li>
+                        <li>Index on <code>salary</code> for filtering</li>
+                        <li>Index on <code>designation</code> for search</li>
+                        <li>Sparse unique index on <code>phone</code></li>
+                        <li>Index on <code>createdAt</code> for sorting</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="collection-card">
+                <h4>3. Bookings Collection <span class="badge badge-info">Secondary</span></h4>
+                <p><strong>Collection Name:</strong> <code>Bookings</code></p>
+                <p><strong>Purpose:</strong> Stores insurance booking records</p>
+                <h5>Document Structure:</h5>
+                <ul class="field-list">
+                    <li><span class="field-name">_id</span> <span class="field-type">(ObjectId/String)</span> - Unique identifier</li>
+                    <li><span class="field-name">userId</span> <span class="field-type">(String, Required)</span> - Reference to Users._id</li>
+                    <li><span class="field-name">insurancePlanId</span> <span class="field-type">(String, Required)</span> - Reference to Insurance._id</li>
+                    <li><span class="field-name">policyNumber</span> <span class="field-type">(String, Optional)</span> - Policy number from insurance plan</li>
+                    <li><span class="field-name">status</span> <span class="field-type">(Enum, Required)</span> - 'pending' | 'confirmed' | 'cancelled' | 'expired' | 'active'</li>
+                    <li><span class="field-name">premium</span> <span class="field-type">(Number, Required)</span> - Premium amount</li>
+                    <li><span class="field-name">coverageAmount</span> <span class="field-type">(Number, Required)</span> - Coverage amount</li>
+                    <li><span class="field-name">startDate</span> <span class="field-type">(Date, Optional)</span> - Coverage start date</li>
+                    <li><span class="field-name">endDate</span> <span class="field-type">(Date, Optional)</span> - Coverage end date</li>
+                    <li><span class="field-name">paymentStatus</span> <span class="field-type">(Enum, Optional)</span> - 'pending' | 'paid' | 'failed' | 'refunded'</li>
+                    <li><span class="field-name">paymentMethod</span> <span class="field-type">(String, Optional)</span> - Payment method</li>
+                    <li><span class="field-name">transactionId</span> <span class="field-type">(String, Optional)</span> - Payment transaction ID</li>
+                    <li><span class="field-name">notes</span> <span class="field-type">(String, Optional)</span> - Additional notes</li>
+                    <li><span class="field-name">createdAt</span> <span class="field-type">(Date, Optional)</span> - Creation timestamp</li>
+                    <li><span class="field-name">updatedAt</span> <span class="field-type">(Date, Optional)</span> - Last update timestamp</li>
+                </ul>
+                <h5>Indexes:</h5>
+                <div class="index-list">
+                    <ul>
+                        <li>Index on <code>userId</code> (most common query)</li>
+                        <li>Index on <code>insurancePlanId</code> for plan lookups</li>
+                        <li>Index on <code>status</code> for filtering</li>
+                        <li>Index on <code>paymentStatus</code> for payment filtering</li>
+                        <li>Compound index on <code>userId, status</code> for user bookings by status</li>
+                        <li>Compound index on <code>startDate, endDate</code> for date range queries</li>
+                        <li>Index on <code>createdAt</code> for sorting (descending)</li>
+                        <li>Sparse index on <code>transactionId</code> (unique if provided)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools -->
+        <div class="section">
+            <h2>🛠️ Tools & Usage</h2>
+            
+            <div class="tool-card">
+                <h4>1. list_insurance <span class="badge badge-primary">Query Tool</span></h4>
+                <p><strong>Purpose:</strong> List and filter insurance plans based on user criteria</p>
+                <p><strong>Widget:</strong> <code>insurance-list</code></p>
+                <h5>Input Parameters:</h5>
+                <ul>
+                    <li><code>salary</code> (Number, Required) - Annual salary for affordability filtering</li>
+                    <li><code>familyMembers</code> (Number, Optional) - Number of family members to cover</li>
+                    <li><code>age</code> (Number, Optional, 0-120) - User age for age range matching</li>
+                    <li><code>limit</code> (Number, Optional, default: 100) - Maximum records to return</li>
+                    <li><code>skip</code> (Number, Optional, default: 0) - Number of records to skip (pagination)</li>
+                    <li><code>filter</code> (Object, Optional) - Additional MongoDB filter object</li>
+                </ul>
+                <h5>Filtering Logic:</h5>
+                <ul>
+                    <li><strong>Salary:</strong> Only returns plans where premium ≤ 10% of annual salary</li>
+                    <li><strong>Family:</strong> If familyMembers > 1, returns plans with familyCoverage=true OR maxFamilyMembers >= familyMembers</li>
+                    <li><strong>Age:</strong> Returns plans where user age is within plan's age range (minAge ≤ age ≤ maxAge)</li>
+                    <li><strong>Custom Filter:</strong> Supports MongoDB operators ($eq, $ne, $gt, $gte, $lt, $lte, $in, $nin, $regex, $exists)</li>
+                </ul>
+                <h5>Response:</h5>
+                <ul>
+                    <li><code>success</code> - Boolean indicating success</li>
+                    <li><code>count</code> - Number of records returned</li>
+                    <li><code>total</code> - Total matching records</li>
+                    <li><code>limit</code> - Applied limit</li>
+                    <li><code>skip</code> - Applied skip</li>
+                    <li><code>insurance</code> - Array of simplified insurance items (name, description, policyId)</li>
+                </ul>
+                <h5>Cache:</h5>
+                <p>TTL: 5 minutes. Cache key generated from all input parameters.</p>
+            </div>
+
+            <div class="tool-card">
+                <h4>2. suggest_insurance_plan <span class="badge badge-success">AI Tool</span></h4>
+                <p><strong>Purpose:</strong> AI-powered insurance plan suggestions with match scoring</p>
+                <p><strong>Widget:</strong> <code>insurance-suggestion</code></p>
+                <h5>Input Parameters:</h5>
+                <ul>
+                    <li><code>age</code> (Number, Required, 0-120) - User age</li>
+                    <li><code>salary</code> (Number, Required) - Annual salary</li>
+                    <li><code>familyMembers</code> (Number, Required) - Number of family members</li>
+                    <li><code>deficiencies</code> (Array[String], Optional) - Health deficiencies/pre-existing conditions</li>
+                    <li><code>insuranceType</code> (String, Optional) - Filter by type (Health, Life, Accident, Travel, Motor)</li>
+                </ul>
+                <h5>Scoring Algorithm (0-100 points):</h5>
+                <table>
+                    <tr>
+                        <th>Factor</th>
+                        <th>Weight</th>
+                        <th>Scoring Logic</th>
+                    </tr>
+                    <tr>
+                        <td>Age Match</td>
+                        <td>30 points</td>
+                        <td>+30 if user age within plan's age range</td>
+                    </tr>
+                    <tr>
+                        <td>Premium Affordability</td>
+                        <td>25 points</td>
+                        <td>+25 if ≤5% salary, +15 if ≤10% salary, +5 if >10%</td>
+                    </tr>
+                    <tr>
+                        <td>Family Coverage</td>
+                        <td>20 points</td>
+                        <td>+20 if plan matches family size requirements</td>
+                    </tr>
+                    <tr>
+                        <td>Pre-existing Conditions</td>
+                        <td>25 points</td>
+                        <td>+25 if coversPreExisting=true</td>
+                    </tr>
+                    <tr>
+                        <td>Specific Conditions</td>
+                        <td>15 points</td>
+                        <td>+15 if plan covers any user deficiencies</td>
+                    </tr>
+                    <tr>
+                        <td>Type Match</td>
+                        <td>10 points</td>
+                        <td>+10 if user has deficiencies and plan type is "Health"</td>
+                    </tr>
+                </table>
+                <h5>Response:</h5>
+                <ul>
+                    <li><code>success</code> - Boolean</li>
+                    <li><code>userProfile</code> - User profile used for matching</li>
+                    <li><code>suggestedPlans</code> - Top 5 plans sorted by match score (highest first)</li>
+                    <li><code>recommendations</code> - Personalized recommendation text</li>
+                </ul>
+                <h5>Cache:</h5>
+                <p>TTL: 5 minutes. Cache key generated from user profile.</p>
+            </div>
+
+            <div class="tool-card">
+                <h4>3. book_insurance_with_user <span class="badge badge-warning">Transaction Tool</span></h4>
+                <p><strong>Purpose:</strong> Create booking record and manage user account</p>
+                <p><strong>Widget:</strong> <code>insurance-booking</code></p>
+                <h5>Input Parameters:</h5>
+                <ul>
+                    <li><code>policyNumber</code> (String, Required) - Insurance policy number</li>
+                    <li><code>email</code> (String, Required) - User email (validated with regex)</li>
+                    <li><code>name</code> (String, Required) - User full name</li>
+                    <li><code>phoneNumber</code> (String, Required) - User phone number</li>
+                    <li><code>paymentMethod</code> (String, Optional) - Payment method</li>
+                    <li><code>startDate</code> (String, Optional) - ISO 8601 format coverage start date</li>
+                    <li><code>years</code> (Number, Optional, 1-50) - Coverage duration in years</li>
+                    <li><code>transactionId</code> (String, Optional) - Payment transaction ID</li>
+                    <li><code>notes</code> (String, Optional) - Additional notes</li>
+                </ul>
+                <h5>Business Logic:</h5>
+                <ul>
+                    <li>Validates insurance plan exists by policyNumber</li>
+                    <li>Creates new user if email doesn't exist, or updates existing user</li>
+                    <li>Creates booking with status='pending' by default</li>
+                    <li>Sets paymentStatus='paid' if transactionId provided, else 'pending'</li>
+                    <li>Calculates endDate from startDate + years if both provided</li>
+                    <li>Extracts premium and coverageAmount from insurance plan</li>
+                </ul>
+                <h5>Response:</h5>
+                <ul>
+                    <li><code>success</code> - Boolean</li>
+                    <li><code>booking</code> - Created booking document</li>
+                    <li><code>user</code> - User document (created or updated)</li>
+                    <li><code>isNewUser</code> - Boolean indicating if user was newly created</li>
+                </ul>
+            </div>
+
+            <div class="tool-card">
+                <h4>4. list_booking_status_by_email <span class="badge badge-info">Query Tool</span></h4>
+                <p><strong>Purpose:</strong> Retrieve all bookings for a user by email</p>
+                <p><strong>Widget:</strong> <code>booking-status-list</code></p>
+                <h5>Input Parameters:</h5>
+                <ul>
+                    <li><code>email</code> (String, Required) - User email address</li>
+                </ul>
+                <h5>Business Logic:</h5>
+                <ul>
+                    <li>Validates email format</li>
+                    <li>Finds user by email (returns error if not found)</li>
+                    <li>Retrieves all bookings for the user</li>
+                    <li>Sorts by createdAt descending (most recent first)</li>
+                </ul>
+                <h5>Response:</h5>
+                <ul>
+                    <li><code>success</code> - Boolean</li>
+                    <li><code>user</code> - User document</li>
+                    <li><code>bookings</code> - Array of all booking documents</li>
+                    <li><code>count</code> - Total number of bookings</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Queries -->
+        <div class="section">
+            <h2>🔍 MongoDB Queries</h2>
+            
+            <h3>Query Building Service</h3>
+            <p>The <code>InsuranceQueryBuilderService</code> constructs optimized MongoDB queries based on input parameters.</p>
+            
+            <h3>1. List Insurance Query</h3>
+            <div class="query-box">
+// Example query for listing insurance plans
+{
+  premium: { $lte: 50000 },  // 10% of 500000 salary
+  $or: [
+    { familyCoverage: true },
+    { maxFamilyMembers: { $gte: 4 } }
+  ],
+  $and: [
+    {
+      $or: [
+        { minAge: { $exists: false } },
+        { minAge: { $lte: 35 } }
+      ]
+    },
+    {
+      $or: [
+        { maxAge: { $exists: false } },
+        { maxAge: { $gte: 35 } }
+      ]
+    }
+  ]
+}
+            </div>
+            
+            <h3>2. Suggestion Query</h3>
+            <div class="query-box">
+// Example query for insurance suggestions
+{
+  premium: { $lte: 50000 },  // Affordable premium
+  $and: [
+    { type: "Health" },  // If insuranceType provided
+    {
+      $or: [
+        { minAge: { $exists: false } },
+        { minAge: { $lte: 35 } }
+      ]
+    },
+    {
+      $or: [
+        { maxAge: { $exists: false } },
+        { maxAge: { $gte: 35 } }
+      ]
+    },
+    {
+      $or: [
+        { familyCoverage: true },
+        { maxFamilyMembers: { $gte: 4 } }
+      ]
+    },
+    {
+      $or: [
+        { coversPreExisting: true },
+        { coversPreExisting: { $exists: false } }
+      ]
+    }
+  ]
+}
+            </div>
+            
+            <h3>3. Booking Queries</h3>
+            <div class="query-box">
+// Find user by email
+{ email: "user@example.com" }
+
+// Find bookings by userId
+{ userId: "507f1f77bcf86cd799439011" }
+
+// Find insurance plan by policyNumber
+{ policyNumber: "POL-HDFC-HEA-0002" }
+            </div>
+            
+            <h3>Query Optimization Features</h3>
+            <ul>
+                <li><strong>Index Usage:</strong> All queries leverage database indexes for fast execution</li>
+                <li><strong>Filtering at Database Level:</strong> Filters applied before data retrieval</li>
+                <li><strong>Pagination:</strong> Uses skip/limit for efficient data retrieval</li>
+                <li><strong>Projection:</strong> Only retrieves necessary fields</li>
+                <li><strong>Input Sanitization:</strong> All inputs sanitized to prevent injection attacks</li>
+            </ul>
+        </div>
+
+        <!-- Cache Handling -->
+        <div class="section">
+            <h2>💾 Cache Handling</h2>
+            
+            <div class="cache-info">
+                <h4>Cache Implementation</h4>
+                <p>The system uses an <strong>in-memory cache</strong> implemented in <code>CacheService</code> to improve performance and reduce database load.</p>
+            </div>
+            
+            <h3>Cache Architecture</h3>
+            <ul>
+                <li><strong>Type:</strong> In-memory Map-based cache</li>
+                <li><strong>Pattern:</strong> Singleton service</li>
+                <li><strong>Storage:</strong> JavaScript Map&lt;string, CacheEntry&gt;</li>
+                <li><strong>TTL (Time To Live):</strong> Configurable per entry, default 5 minutes</li>
+            </ul>
+            
+            <h3>Cache Entry Structure</h3>
+            <div class="query-box">
+interface CacheEntry&lt;T&gt; {
+  data: T;              // Cached data
+  timestamp: number;    // Cache creation timestamp
+  ttl: number;          // Time to live in milliseconds
+}
+            </div>
+            
+            <h3>Cache Operations</h3>
+            <table>
+                <tr>
+                    <th>Operation</th>
+                    <th>Method</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Get</td>
+                    <td><code>get&lt;T&gt;(key: string)</code></td>
+                    <td>Retrieves cached value if exists and not expired</td>
+                </tr>
+                <tr>
+                    <td>Set</td>
+                    <td><code>set&lt;T&gt;(key: string, value: T, ttl?: number)</code></td>
+                    <td>Stores value with optional custom TTL</td>
+                </tr>
+                <tr>
+                    <td>Get or Compute</td>
+                    <td><code>getOrCompute&lt;T&gt;(key, computeFn, ttl?)</code></td>
+                    <td>Returns cached value or computes and caches new value</td>
+                </tr>
+                <tr>
+                    <td>Delete</td>
+                    <td><code>delete(key: string)</code></td>
+                    <td>Removes specific cache entry</td>
+                </tr>
+                <tr>
+                    <td>Clear</td>
+                    <td><code>clear()</code></td>
+                    <td>Removes all cache entries</td>
+                </tr>
+            </table>
+            
+            <h3>Cache Key Generation</h3>
+            <p>Cache keys are generated deterministically from input parameters:</p>
+            <div class="query-box">
+// Key format: "prefix:param1:value1|param2:value2|..."
+// Example: "list_insurance:age:35|familyMembers:4|salary:500000|skip:0|limit:10"
+            </div>
+            <ul>
+                <li>Parameters are sorted alphabetically</li>
+                <li>Values are JSON stringified</li>
+                <li>Ensures same inputs produce same cache key</li>
+            </ul>
+            
+            <h3>Cache TTL by Operation</h3>
+            <table>
+                <tr>
+                    <th>Operation</th>
+                    <th>TTL</th>
+                    <th>Reason</th>
+                </tr>
+                <tr>
+                    <td>list_insurance</td>
+                    <td>5 minutes</td>
+                    <td>Insurance plans change infrequently</td>
+                </tr>
+                <tr>
+                    <td>suggest_insurance_plan</td>
+                    <td>5 minutes</td>
+                    <td>Suggestions are stable for same user profile</td>
+                </tr>
+                <tr>
+                    <td>search_insurance_names</td>
+                    <td>2 minutes</td>
+                    <td>Search results may change more frequently</td>
+                </tr>
+            </table>
+            
+            <h3>Cache Cleanup</h3>
+            <ul>
+                <li><strong>Automatic Cleanup:</strong> Runs every 60 seconds</li>
+                <li><strong>Expiration Check:</strong> Removes entries where (now - timestamp) > ttl</li>
+                <li><strong>Lazy Expiration:</strong> Also checks expiration on get() operations</li>
+            </ul>
+            
+            <h3>Cache Statistics</h3>
+            <p>The cache service provides statistics via <code>getStats()</code>:</p>
+            <ul>
+                <li>Current cache size (number of entries)</li>
+                <li>List of all cache keys</li>
+            </ul>
+            
+            <h3>Cache Flow</h3>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <strong>Request Received</strong> - Tool receives input parameters
+                </div>
+                <div class="workflow-step">
+                    <strong>Generate Cache Key</strong> - Create deterministic key from parameters
+                </div>
+                <div class="workflow-step">
+                    <strong>Check Cache</strong> - Look up key in cache Map
+                </div>
+                <div class="workflow-step">
+                    <strong>Cache Hit?</strong> - If found and not expired, return cached data
+                </div>
+                <div class="workflow-step">
+                    <strong>Cache Miss</strong> - Execute database query
+                </div>
+                <div class="workflow-step">
+                    <strong>Store in Cache</strong> - Save result with appropriate TTL
+                </div>
+                <div class="workflow-step">
+                    <strong>Return Result</strong> - Return data to caller
+                </div>
+            </div>
+            
+            <h3>Cache Benefits</h3>
+            <ul>
+                <li><strong>Performance:</strong> Reduces database queries by 60-80% for repeated requests</li>
+                <li><strong>Latency:</strong> Cache hits return in &lt;1ms vs 10-50ms for database queries</li>
+                <li><strong>Database Load:</strong> Significantly reduces load on MongoDB</li>
+                <li><strong>Cost:</strong> Lower database operation costs</li>
+            </ul>
+        </div>
+
+        <!-- How It Works -->
+        <div class="section">
+            <h2>⚙️ How It Works</h2>
+            
+            <h3>System Initialization</h3>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <strong>Application Start</strong> - NitroStack CLI starts the MCP server
+                </div>
+                <div class="workflow-step">
+                    <strong>Module Loading</strong> - AppModule loads InsuranceModule
+                </div>
+                <div class="workflow-step">
+                    <strong>MongoDB Initialization</strong> - MongoDBInitProvider initializes database connection
+                </div>
+                <div class="workflow-step">
+                    <strong>Connection Pooling</strong> - MongoDBService creates connection pool (min: 2, max: 10)
+                </div>
+                <div class="workflow-step">
+                    <strong>Index Creation</strong> - Automatic index creation for all collections
+                </div>
+                <div class="workflow-step">
+                    <strong>Service Initialization</strong> - CacheService, MetricsService initialized as singletons
+                </div>
+                <div class="workflow-step">
+                    <strong>Health Check Start</strong> - InsuranceHealthCheck starts monitoring (every 30 seconds)
+                </div>
+                <div class="workflow-step">
+                    <strong>Ready State</strong> - Server ready to accept requests
+                </div>
+            </div>
+            
+            <h3>Request Processing Flow</h3>
+            <div class="workflow">
+                <div class="workflow-step">
+                    <strong>Request Received</strong> - MCP server receives tool invocation request
+                </div>
+                <div class="workflow-step">
+                    <strong>Input Validation</strong> - Zod schema validates input parameters
+                </div>
+                <div class="workflow-step">
+                    <strong>Input Sanitization</strong> - InputSanitizer sanitizes all string/number inputs
+                </div>
+                <div class="workflow-step">
+                    <strong>Cache Check</strong> - CacheService checks for cached result
+                </div>
+                <div class="workflow-step">
+                    <strong>Query Building</strong> - InsuranceQueryBuilderService builds MongoDB query
+                </div>
+                <div class="workflow-step">
+                    <strong>Database Query</strong> - MongoDBService executes query using indexes
+                </div>
+                <div class="workflow-step">
+                    <strong>Data Processing</strong> - Results processed (scoring, formatting, etc.)
+                </div>
+                <div class="workflow-step">
+                    <strong>Cache Storage</strong> - Result stored in cache with TTL
+                </div>
+                <div class="workflow-step">
+                    <strong>Metrics Recording</strong> - MetricsService records operation success/time
+                </div>
+                <div class="workflow-step">
+                    <strong>Response Return</strong> - Formatted response returned to client
+                </div>
+            </div>
+            
+            <h3>Error Handling</h3>
+            <ul>
+                <li><strong>Custom Error Classes:</strong> Structured errors with codes and context</li>
+                <li><strong>Error Types:</strong>
+                    <ul>
+                        <li><code>DatabaseConnectionError</code> - Connection failures</li>
+                        <li><code>DatabaseQueryError</code> - Query execution failures</li>
+                        <li><code>InvalidInputError</code> - Input validation failures</li>
+                        <li><code>ConfigurationError</code> - Configuration issues</li>
+                    </ul>
+                </li>
+                <li><strong>Retry Logic:</strong> Automatic reconnection with exponential backoff (max 5 attempts)</li>
+                <li><strong>Error Metrics:</strong> All errors tracked in MetricsService</li>
+            </ul>
+            
+            <h3>Performance Optimizations</h3>
+            <ul>
+                <li><strong>Database Indexes:</strong> 20+ indexes across collections for fast queries</li>
+                <li><strong>Connection Pooling:</strong> Reuses database connections (2-10 connections)</li>
+                <li><strong>Caching:</strong> In-memory cache reduces database load</li>
+                <li><strong>Query Optimization:</strong> Filters applied at database level</li>
+                <li><strong>Pagination:</strong> Efficient data retrieval with skip/limit</li>
+                <li><strong>Lazy Loading:</strong> Collections initialized only when needed</li>
+            </ul>
+            
+            <h3>Monitoring & Metrics</h3>
+            <ul>
+                <li><strong>MetricsService:</strong> Tracks operation performance
+                    <ul>
+                        <li>Operation count</li>
+                        <li>Average execution time</li>
+                        <li>Min/Max execution times</li>
+                        <li>Error count</li>
+                        <li>Success rate percentage</li>
+                    </ul>
+                </li>
+                <li><strong>Health Checks:</strong>
+                    <ul>
+                        <li>MongoDB connection status</li>
+                        <li>Database availability (ping)</li>
+                        <li>Runs every 30 seconds</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Security Features</h3>
+            <ul>
+                <li><strong>Input Sanitization:</strong>
+                    <ul>
+                        <li>Regex injection prevention</li>
+                        <li>String sanitization</li>
+                        <li>Number validation</li>
+                        <li>Filter object sanitization</li>
+                    </ul>
+                </li>
+                <li><strong>Type Validation:</strong> Zod schemas validate all inputs</li>
+                <li><strong>MongoDB Injection Prevention:</strong> Filter objects sanitized before query</li>
+                <li><strong>Email Validation:</strong> Regex validation for email format</li>
+            </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="section">
+            <h2>🔧 Services & Components</h2>
+            
+            <h3>Core Services</h3>
+            <table>
+                <tr>
+                    <th>Service</th>
+                    <th>Purpose</th>
+                    <th>Pattern</th>
+                </tr>
+                <tr>
+                    <td>MongoDBService</td>
+                    <td>Database connection management, connection pooling, index creation</td>
+                    <td>Singleton</td>
+                </tr>
+                <tr>
+                    <td>CacheService</td>
+                    <td>In-memory caching with TTL, automatic cleanup</td>
+                    <td>Singleton</td>
+                </tr>
+                <tr>
+                    <td>MetricsService</td>
+                    <td>Operation tracking, performance monitoring</td>
+                    <td>Singleton</td>
+                </tr>
+                <tr>
+                    <td>InsuranceQueryBuilderService</td>
+                    <td>MongoDB query construction with optimization</td>
+                    <td>Instance</td>
+                </tr>
+                <tr>
+                    <td>InsuranceScoringService</td>
+                    <td>Match score calculation for insurance plans</td>
+                    <td>Instance</td>
+                </tr>
+                <tr>
+                    <td>InsuranceRecommendationService</td>
+                    <td>Personalized recommendation text generation</td>
+                    <td>Instance</td>
+                </tr>
+            </table>
+            
+            <h3>Configuration</h3>
+            <ul>
+                <li><strong>InsuranceConfig:</strong> Environment variable management with Zod validation</li>
+                <li><strong>Environment Variables:</strong>
+                    <ul>
+                        <li><code>MONGODB_URI</code> - MongoDB connection string</li>
+                        <li><code>MONGODB_DATABASE_NAME</code> - Database name (default: "Insurance")</li>
+                        <li><code>MONGODB_COLLECTION_NAME</code> - Collection name (default: "Insurance")</li>
+                        <li><code>MONGODB_MAX_POOL_SIZE</code> - Max connections (default: 10)</li>
+                        <li><code>MONGODB_MIN_POOL_SIZE</code> - Min connections (default: 2)</li>
+                        <li><code>MONGODB_CONNECT_TIMEOUT_MS</code> - Connection timeout (default: 30000)</li>
+                        <li><code>MONGODB_SERVER_SELECTION_TIMEOUT_MS</code> - Server selection timeout (default: 5000)</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>Utilities</h3>
+            <ul>
+                <li><strong>InputSanitizer:</strong> Sanitizes strings, numbers, arrays, and filter objects</li>
+                <li><strong>ObjectIdUtil:</strong> Converts MongoDB ObjectIds to strings for JSON serialization</li>
+            </ul>
+        </div>
+
+        <!-- Widgets -->
+        <div class="section">
+            <h2>🎨 Widgets (UI Components)</h2>
+            
+            <p>Next.js-based React widgets for displaying tool results:</p>
+            
+            <ul>
+                <li><strong>insurance-list</strong> - Displays list of insurance plans</li>
+                <li><strong>insurance-suggestion</strong> - Shows suggested plans with scores and reasons</li>
+                <li><strong>insurance-booking</strong> - Booking confirmation interface</li>
+                <li><strong>booking-status-list</strong> - User booking history with status cards</li>
+                <li><strong>calculator-result</strong> - Calculator tool result display</li>
+                <li><strong>insurance-search-dropdown</strong> - Search dropdown component</li>
+            </ul>
+            
+            <p><strong>Widget Development:</strong> Hot module replacement enabled for development</p>
+        </div>
+
+        <div class="footer">
+            <p><strong>InsureMate Project Analysis</strong></p>
+            <p>Generated: <span id="date"></span></p>
+            <p>Author: Geetha Charu Mathi</p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleString();
+    </script>
+</body>
+</html>

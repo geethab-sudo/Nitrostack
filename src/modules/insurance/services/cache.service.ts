@@ -99,13 +99,6 @@ export class CacheService {
   }
 
   /**
-   * Generate cache key for search insurance names query
-   */
-  public getSearchNamesKey(params: Record<string, any>): string {
-    return this.generateKey('search_names', params);
-  }
-
-  /**
    * Generate cache key for suggest insurance plan query
    */
   public getSuggestPlanKey(params: Record<string, any>): string {

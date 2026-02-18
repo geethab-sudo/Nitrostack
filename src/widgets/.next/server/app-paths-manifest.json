@@ -1,4 +1,7 @@
 {
-  "/insurance-search-dropdown/page": "app/insurance-search-dropdown/page.js",
-  "/insurance-suggestion/page": "app/insurance-suggestion/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/insurance-suggestion/page": "app/insurance-suggestion/page.js",
+  "/insurance-list/page": "app/insurance-list/page.js",
+  "/insurance-booking/page": "app/insurance-booking/page.js",
+  "/booking-status-list/page": "app/booking-status-list/page.js"
 }

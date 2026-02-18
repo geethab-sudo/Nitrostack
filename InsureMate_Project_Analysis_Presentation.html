@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsureMate Project Analysis - Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        
+        .slide {
+            page-break-after: always;
+            margin-bottom: 60px;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-height: 600px;
+        }
+        
+        .slide:last-child {
+            page-break-after: auto;
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+        
+        h2 {
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            font-size: 2em;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+        
+        .slide-title {
+            color: #764ba2;
+            font-size: 2em;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .slide-content {
+            margin-top: 20px;
+        }
+        
+        .slide-content ul {
+            margin-left: 30px;
+            margin-top: 15px;
+        }
+        
+        .slide-content li {
+            margin: 10px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .slide-content p {
+            margin: 15px 0;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+        
+        .title-slide {
+            text-align: center;
+            padding: 80px 40px;
+        }
+        
+        .title-slide h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            border: none;
+        }
+        
+        .title-slide .subtitle {
+            font-size: 1.5em;
+            color: #666;
+            margin-top: 30px;
+            line-height: 2;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .column {
+            padding: 15px;
+        }
+        
+        .column ul {
+            margin-left: 20px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            color: #888;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .slide {
+                page-break-after: always;
+                margin-bottom: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<div class="slide title-slide">
+<div class="slide-number">Slide 1 of 29</div>
+<h1>InsureMate Project Analysis</h1>
+<div class="slide-content">
+<p>Comprehensive Insurance Management System</p>
+<p>Technical Documentation</p>
+<p>Generated: February 10, 2026</p>
+<p>Author: Geetha Charu Mathi</p>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 2 of 29</div>
+<h2 class="slide-title">Technology Stack</h2>
+<div class="slide-content">
+<p>Runtime &amp; Language: Node.js, TypeScript, ES2022</p>
+<p>Framework &amp; Core: NitroStack, @nitrostack/core, @nitrostack/cli</p>
+<p>Database: MongoDB (v7.1.0), Connection Pooling</p>
+<p>Validation &amp; Schema: Zod (v3.22.4), TypeScript Interfaces</p>
+<p>UI Framework: Next.js, React, TypeScript</p>
+<p>Utilities: dotenv, In-memory Cache</p>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 3 of 29</div>
+<h2 class="slide-title">System Architecture</h2>
+<div class="slide-content">
+<p>5-Layer Architecture</p>
+<p>Presentation Layer: Next.js Widgets (React-based UI)</p>
+<p>Application Layer: NitroStack MCP Server</p>
+<p>Business Logic Layer: Services (Query, Scoring, Recommendation)</p>
+<p>Data Access Layer: MongoDBService with Connection Pooling</p>
+<p>Data Layer: MongoDB Database with Collections &amp; Indexes</p>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 4 of 29</div>
+<h2 class="slide-title">Architecture - Presentation &amp; Application Layers</h2>
+<div class="slide-content">
+<ul>
+<li>Presentation Layer:</li>
+<li>Next.js Widgets - React-based UI components</li>
+<li>Widgets: insurance-list, insurance-suggestion, insurance-booking, booking-status-list</li>
+<li>Hot module replacement for development</li>
+<li>Application Layer:</li>
+<li>NitroStack MCP Server - Model Context Protocol server</li>
+<li>Tools - Business logic endpoints</li>
+<li>Resources - Data exposure endpoints</li>
+<li>Prompts - Conversation templates</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 5 of 29</div>
+<h2 class="slide-title">Architecture - Business Logic &amp; Data Access</h2>
+<div class="slide-content">
+<ul>
+<li>Business Logic Layer:</li>
+<li>InsuranceTools - Main tool controller</li>
+<li>InsuranceQueryBuilderService - MongoDB query construction</li>
+<li>InsuranceScoringService - Plan matching algorithm</li>
+<li>InsuranceRecommendationService - Recommendation generation</li>
+<li>CacheService - In-memory caching</li>
+<li>MetricsService - Performance monitoring</li>
+<li>Data Access Layer:</li>
+<li>MongoDBService - Database connection management</li>
+<li>Connection Pooling - Efficient connection reuse (min: 2, max: 10)</li>
+<li>Index Management - Automatic index creation</li>
+<li>Retry Logic - Automatic reconnection</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 6 of 29</div>
+<h2 class="slide-title">MongoDB Collections</h2>
+<div class="slide-content">
+<p>Three Main Collections:</p>
+<p>1. Insurance Collection (Primary)</p>
+<p>2. Users Collection (Secondary)</p>
+<p>3. Bookings Collection (Secondary)</p>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 7 of 29</div>
+<h2 class="slide-title">Insurance Collection</h2>
+<div class="slide-content">
+<ul>
+<li>Insurance Collection:</li>
+<li>Stores all insurance plan information</li>
+<li>Key Fields: name, type, premium, coverage, policyNumber</li>
+<li>Age Range: minAge, maxAge</li>
+<li>Family: familyCoverage, maxFamilyMembers</li>
+<li>Conditions: coversPreExisting, coveredConditions</li>
+<li>Provider &amp; Description</li>
+<li>Indexes:</li>
+<li>Text index on name for search</li>
+<li>Indexes on premium, age ranges, family coverage</li>
+<li>Unique sparse index on policyNumber</li>
+<li>Compound indexes for common queries</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 8 of 29</div>
+<h2 class="slide-title">Users Collection</h2>
+<div class="slide-content">
+<ul>
+<li>Users Collection:</li>
+<li>Stores user account information</li>
+<li>Key Fields: email (unique), name, phone, age, salary</li>
+<li>Additional: designation, address, familyMembers</li>
+<li>Timestamps: createdAt, updatedAt</li>
+<li>Indexes:</li>
+<li>Unique index on email (primary key)</li>
+<li>Text index on name for search</li>
+<li>Indexes on age, salary, designation</li>
+<li>Sparse unique index on phone</li>
+<li>Index on createdAt for sorting</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 9 of 29</div>
+<h2 class="slide-title">Bookings Collection</h2>
+<div class="slide-content">
+<ul>
+<li>Bookings Collection:</li>
+<li>Stores insurance booking records</li>
+<li>References: userId, insurancePlanId, policyNumber</li>
+<li>Status: status (pending/confirmed/cancelled/expired/active)</li>
+<li>Financial: premium, coverageAmount</li>
+<li>Dates: startDate, endDate</li>
+<li>Payment: paymentStatus, paymentMethod, transactionId</li>
+<li>Additional: notes, createdAt, updatedAt</li>
+<li>Indexes:</li>
+<li>Index on userId (most common query)</li>
+<li>Indexes on insurancePlanId, status, paymentStatus</li>
+<li>Compound indexes for user bookings by status</li>
+<li>Date range indexes for queries</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 10 of 29</div>
+<h2 class="slide-title">Tools &amp; Usage</h2>
+<div class="slide-content">
+<p>Four Main Tools:</p>
+<p>1. list_insurance - Query Tool</p>
+<p>2. suggest_insurance_plan - AI Tool</p>
+<p>3. book_insurance_with_user - Transaction Tool</p>
+<p>4. list_booking_status_by_email - Query Tool</p>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 11 of 29</div>
+<h2 class="slide-title">Tool: list_insurance</h2>
+<div class="slide-content">
+<ul>
+<li>list_insurance Tool:</li>
+<li>Purpose: List and filter insurance plans</li>
+<li>Widget: insurance-list</li>
+<li>Input Parameters:</li>
+<li>salary (Required) - Annual salary for affordability</li>
+<li>familyMembers (Optional) - Number of family members</li>
+<li>age (Optional, 0-120) - User age for age range matching</li>
+<li>limit (Optional, default: 100) - Max records</li>
+<li>skip (Optional, default: 0) - Pagination</li>
+<li>filter (Optional) - Additional MongoDB filter</li>
+<li>Filtering Logic:</li>
+<li>Premium ≤ 10% of annual salary</li>
+<li>Family coverage matching</li>
+<li>Age range validation</li>
+<li>Custom MongoDB operators supported</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 12 of 29</div>
+<h2 class="slide-title">Tool: suggest_insurance_plan</h2>
+<div class="slide-content">
+<ul>
+<li>suggest_insurance_plan Tool:</li>
+<li>Purpose: AI-powered insurance plan suggestions with match scoring</li>
+<li>Widget: insurance-suggestion</li>
+<li>Input Parameters:</li>
+<li>age (Required, 0-120) - User age</li>
+<li>salary (Required) - Annual salary</li>
+<li>familyMembers (Required) - Number of family members</li>
+<li>deficiencies (Optional) - Health deficiencies/pre-existing conditions</li>
+<li>insuranceType (Optional) - Filter by type</li>
+<li>Scoring Algorithm (0-100 points):</li>
+<li>Age Match: 30 points</li>
+<li>Premium Affordability: 25 points</li>
+<li>Family Coverage: 20 points</li>
+<li>Pre-existing Conditions: 25 points</li>
+<li>Specific Conditions: 15 points</li>
+<li>Type Match: 10 points</li>
+<li>Returns: Top 5 plans sorted by match score</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 13 of 29</div>
+<h2 class="slide-title">Tool: book_insurance_with_user</h2>
+<div class="slide-content">
+<ul>
+<li>book_insurance_with_user Tool:</li>
+<li>Purpose: Create booking record and manage user account</li>
+<li>Widget: insurance-booking</li>
+<li>Input Parameters:</li>
+<li>policyNumber (Required) - Insurance policy number</li>
+<li>email (Required) - User email (validated)</li>
+<li>name (Required) - User full name</li>
+<li>phoneNumber (Required) - User phone number</li>
+<li>paymentMethod (Optional) - Payment method</li>
+<li>startDate (Optional) - ISO 8601 format</li>
+<li>years (Optional, 1-50) - Coverage duration</li>
+<li>transactionId (Optional) - Payment transaction ID</li>
+<li>notes (Optional) - Additional notes</li>
+<li>Business Logic:</li>
+<li>Validates insurance plan exists</li>
+<li>Creates/updates user account</li>
+<li>Creates booking with status=&#39;pending&#39;</li>
+<li>Sets payment status based on transactionId</li>
+<li>Calculates endDate from startDate + years</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 14 of 29</div>
+<h2 class="slide-title">Tool: list_booking_status_by_email</h2>
+<div class="slide-content">
+<ul>
+<li>list_booking_status_by_email Tool:</li>
+<li>Purpose: Retrieve all bookings for a user by email</li>
+<li>Widget: booking-status-list</li>
+<li>Input Parameters:</li>
+<li>email (Required) - User email address</li>
+<li>Business Logic:</li>
+<li>Validates email format</li>
+<li>Finds user by email (returns error if not found)</li>
+<li>Retrieves all bookings for the user</li>
+<li>Sorts by createdAt descending (most recent first)</li>
+<li>Response:</li>
+<li>success - Boolean</li>
+<li>user - User document</li>
+<li>bookings - Array of all booking documents</li>
+<li>count - Total number of bookings</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 15 of 29</div>
+<h2 class="slide-title">MongoDB Queries</h2>
+<div class="slide-content">
+<ul>
+<li>MongoDB Query Optimization:</li>
+<li>InsuranceQueryBuilderService constructs optimized queries</li>
+<li>All queries leverage database indexes</li>
+<li>Filters applied at database level</li>
+<li>Pagination with skip/limit</li>
+<li>Projection for necessary fields only</li>
+<li>Input sanitization prevents injection attacks</li>
+<li>Query Types:</li>
+<li>1. List Insurance Query - Filters by salary, age, family</li>
+<li>2. Suggestion Query - Optimized for scoring algorithm</li>
+<li>3. Booking Queries - User lookup, plan lookup, status filtering</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 16 of 29</div>
+<h2 class="slide-title">Cache Handling</h2>
+<div class="slide-content">
+<ul>
+<li>Cache Implementation:</li>
+<li>Type: In-memory Map-based cache</li>
+<li>Pattern: Singleton service</li>
+<li>Storage: JavaScript Map</li>
+<li>TTL: Configurable per entry, default 5 minutes</li>
+<li>Cache Operations:</li>
+<li>get(key) - Retrieve cached value</li>
+<li>set(key, value, ttl?) - Store value</li>
+<li>getOrCompute(key, computeFn, ttl?) - Cache or compute</li>
+<li>delete(key) - Remove entry</li>
+<li>clear() - Remove all entries</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 17 of 29</div>
+<h2 class="slide-title">Cache Details</h2>
+<div class="slide-content">
+<ul>
+<li>Cache TTL by Operation:</li>
+<li>list_insurance: 5 minutes</li>
+<li>suggest_insurance_plan: 5 minutes</li>
+<li>search_insurance_names: 2 minutes</li>
+<li>Cache Key Generation:</li>
+<li>Deterministic from input parameters</li>
+<li>Parameters sorted alphabetically</li>
+<li>Values JSON stringified</li>
+<li>Format: &#39;prefix:param1:value1|param2:value2|...&#39;</li>
+<li>Cache Cleanup:</li>
+<li>Automatic cleanup every 60 seconds</li>
+<li>Lazy expiration on get() operations</li>
+<li>Removes expired entries</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 18 of 29</div>
+<h2 class="slide-title">Cache Benefits &amp; Flow</h2>
+<div class="slide-content">
+<ul>
+<li>Cache Benefits:</li>
+<li>Performance: Reduces database queries by 60-80%</li>
+<li>Latency: Cache hits return in &lt;1ms vs 10-50ms for DB queries</li>
+<li>Database Load: Significantly reduces load on MongoDB</li>
+<li>Cost: Lower database operation costs</li>
+<li>Cache Flow:</li>
+<li>1. Request received with parameters</li>
+<li>2. Generate deterministic cache key</li>
+<li>3. Check cache for existing entry</li>
+<li>4. If cache hit and not expired, return cached data</li>
+<li>5. If cache miss, execute database query</li>
+<li>6. Store result in cache with TTL</li>
+<li>7. Return result to caller</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 19 of 29</div>
+<h2 class="slide-title">System Initialization</h2>
+<div class="slide-content">
+<p>System Initialization:</p>
+<p>1. Application Start - NitroStack CLI starts MCP server</p>
+<p>2. Module Loading - AppModule loads InsuranceModule</p>
+<p>3. MongoDB Initialization - Connection established</p>
+<p>4. Connection Pooling - Pool created (min: 2, max: 10)</p>
+<p>5. Index Creation - Automatic index creation for collections</p>
+<p>6. Service Initialization - CacheService, MetricsService as singletons</p>
+<p>7. Health Check Start - Monitoring every 30 seconds</p>
+<p>8. Ready State - Server ready to accept requests</p>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 20 of 29</div>
+<h2 class="slide-title">Request Processing Flow</h2>
+<div class="slide-content">
+<p>Request Processing Flow:</p>
+<p>1. Request Received - MCP server receives tool invocation</p>
+<p>2. Input Validation - Zod schema validates parameters</p>
+<p>3. Input Sanitization - InputSanitizer sanitizes inputs</p>
+<p>4. Cache Check - CacheService checks for cached result</p>
+<p>5. Query Building - InsuranceQueryBuilderService builds query</p>
+<p>6. Database Query - MongoDBService executes using indexes</p>
+<p>7. Data Processing - Results processed (scoring, formatting)</p>
+<p>8. Cache Storage - Result stored in cache with TTL</p>
+<p>9. Metrics Recording - MetricsService records operation</p>
+<p>10. Response Return - Formatted response returned</p>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 21 of 29</div>
+<h2 class="slide-title">Error Handling</h2>
+<div class="slide-content">
+<ul>
+<li>Error Handling:</li>
+<li>Custom Error Classes with codes and context</li>
+<li>Error Types:</li>
+<li>DatabaseConnectionError - Connection failures</li>
+<li>DatabaseQueryError - Query execution failures</li>
+<li>InvalidInputError - Input validation failures</li>
+<li>ConfigurationError - Configuration issues</li>
+<li>Retry Logic:</li>
+<li>Automatic reconnection with exponential backoff</li>
+<li>Maximum 5 retry attempts</li>
+<li>All errors tracked in MetricsService</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 22 of 29</div>
+<h2 class="slide-title">Performance &amp; Monitoring</h2>
+<div class="slide-content">
+<ul>
+<li>Performance Optimizations:</li>
+<li>Database Indexes: 20+ indexes across collections</li>
+<li>Connection Pooling: Reuses connections (2-10)</li>
+<li>Caching: In-memory cache reduces database load</li>
+<li>Query Optimization: Filters at database level</li>
+<li>Pagination: Efficient data retrieval with skip/limit</li>
+<li>Lazy Loading: Collections initialized when needed</li>
+<li>Monitoring &amp; Metrics:</li>
+<li>MetricsService tracks: operation count, avg/min/max times</li>
+<li>Error count and success rate percentage</li>
+<li>Health Checks: MongoDB connection status, ping every 30s</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 23 of 29</div>
+<h2 class="slide-title">Security Features</h2>
+<div class="slide-content">
+<ul>
+<li>Security Features:</li>
+<li>Input Sanitization:</li>
+<li>Regex injection prevention</li>
+<li>String sanitization</li>
+<li>Number validation</li>
+<li>Filter object sanitization</li>
+<li>Type Validation:</li>
+<li>Zod schemas validate all inputs</li>
+<li>MongoDB Injection Prevention:</li>
+<li>Filter objects sanitized before query</li>
+<li>Email Validation:</li>
+<li>Regex validation for email format</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 24 of 29</div>
+<h2 class="slide-title">Core Services</h2>
+<div class="slide-content">
+<ul>
+<li>Core Services:</li>
+<li>MongoDBService - Database connection, pooling, indexes (Singleton)</li>
+<li>CacheService - In-memory caching with TTL (Singleton)</li>
+<li>MetricsService - Operation tracking, monitoring (Singleton)</li>
+<li>InsuranceQueryBuilderService - MongoDB query construction</li>
+<li>InsuranceScoringService - Match score calculation</li>
+<li>InsuranceRecommendationService - Recommendation generation</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 25 of 29</div>
+<h2 class="slide-title">Configuration</h2>
+<div class="slide-content">
+<ul>
+<li>Configuration:</li>
+<li>InsuranceConfig: Environment variable management with Zod</li>
+<li>Environment Variables:</li>
+<li>MONGODB_URI - MongoDB connection string</li>
+<li>MONGODB_DATABASE_NAME - Database name (default: &#39;Insurance&#39;)</li>
+<li>MONGODB_COLLECTION_NAME - Collection name (default: &#39;Insurance&#39;)</li>
+<li>MONGODB_MAX_POOL_SIZE - Max connections (default: 10)</li>
+<li>MONGODB_MIN_POOL_SIZE - Min connections (default: 2)</li>
+<li>MONGODB_CONNECT_TIMEOUT_MS - Connection timeout (default: 30000)</li>
+<li>MONGODB_SERVER_SELECTION_TIMEOUT_MS - Server selection timeout (default: 5000)</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 26 of 29</div>
+<h2 class="slide-title">Utilities</h2>
+<div class="slide-content">
+<ul>
+<li>Utilities:</li>
+<li>InputSanitizer - Sanitizes strings, numbers, arrays, filter objects</li>
+<li>ObjectIdUtil - Converts MongoDB ObjectIds to strings for JSON</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 27 of 29</div>
+<h2 class="slide-title">Widgets (UI Components)</h2>
+<div class="slide-content">
+<ul>
+<li>Widgets (UI Components):</li>
+<li>Next.js-based React widgets for displaying tool results:</li>
+<li>insurance-list - Displays list of insurance plans</li>
+<li>insurance-suggestion - Shows suggested plans with scores</li>
+<li>insurance-booking - Booking confirmation interface</li>
+<li>booking-status-list - User booking history with status cards</li>
+<li>calculator-result - Calculator tool result display</li>
+<li>insurance-search-dropdown - Search dropdown component</li>
+<li>Widget Development:</li>
+<li>Hot module replacement enabled for development</li>
+</ul>
+</div>
+</div>
+<div class="slide">
+<div class="slide-number">Slide 28 of 29</div>
+<h2 class="slide-title">Summary</h2>
+<div class="slide-content">
+<ul>
+<li>Key Highlights:</li>
+<li>Modern Tech Stack: Node.js, TypeScript, MongoDB, Next.js</li>
+<li>5-Layer Architecture with clear separation of concerns</li>
+<li>3 MongoDB Collections with optimized indexes</li>
+<li>4 Main Tools for insurance management</li>
+<li>Intelligent Caching System (60-80% query reduction)</li>
+<li>Comprehensive Error Handling &amp; Retry Logic</li>
+<li>Performance Optimizations (20+ indexes, connection pooling)</li>
+<li>Security Features (Input sanitization, injection prevention)</li>
+<li>Monitoring &amp; Metrics for operational insights</li>
+</ul>
+</div>
+</div>
+<div class="slide title-slide">
+<div class="slide-number">Slide 29 of 29</div>
+<h1>Thank You</h1>
+<div class="slide-content">
+<p>Questions &amp; Discussion</p>
+</div>
+</div>
+        <div class="footer">
+            <p><strong>InsureMate Project Analysis - Presentation</strong></p>
+            <p>Converted from PowerPoint: February 10, 2026 at 11:04 AM</p>
+            <p>Total Slides: 29</p>
+        </div>
+    </div>
+</body>
+</html>

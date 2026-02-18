@@ -1,4 +1,4 @@
-// File: /Users/wekanadmin/NitInsrance/src/widgets/app/insurance-suggestion/page.tsx
+// File: /Users/wekanadmin/InsureMate/src/widgets/app/insurance-suggestion/page.tsx
 import * as entry from '../../../../app/insurance-suggestion/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

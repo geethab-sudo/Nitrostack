@@ -32,10 +32,6 @@ export class InsuranceResources {
               description: 'List all insurance records with optional filtering and pagination'
             },
             {
-              name: 'search_insurance_names',
-              description: 'Search insurance names with auto-complete support'
-            },
-            {
               name: 'suggest_insurance_plan',
               description: 'Suggest insurance plans based on age, salary, family members, and health deficiencies'
             }

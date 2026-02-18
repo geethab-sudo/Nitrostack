@@ -71,23 +71,6 @@ export class InsuranceQueryBuilderService {
   }
 
   /**
-   * Build query for searching insurance names
-   */
-  public buildSearchQuery(searchQuery?: string): Filter<any> {
-    const query: Filter<any> = {};
-
-    if (searchQuery && searchQuery.trim()) {
-      // Use text search if available, otherwise use regex
-      query.$or = [
-        { $text: { $search: searchQuery.trim() } },
-        { name: { $regex: searchQuery.trim(), $options: 'i' } },
-      ];
-    }
-
-    return query;
-  }
-
-  /**
    * Build query for suggesting insurance plans based on user profile
    * This query filters plans that are potentially suitable before scoring
    */

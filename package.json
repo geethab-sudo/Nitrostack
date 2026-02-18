@@ -1,17 +1,17 @@
 {
-  "name": "NitInsrance",
+  "name": "InsureMate",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "description": "Get Insurance",
   "scripts": {
-    "dev": "nitrostack-cli dev",
-    "build": "nitrostack-cli build",
-    "start": "npm run build && nitrostack-cli start",
-    "start:prod": "nitrostack-cli start",
-    "upgrade": "nitrostack-cli upgrade",
-    "install:all": "nitrostack-cli install",
-    "widget": "npm --prefix src/widgets"
+    "dev": "NODE_OPTIONS='--disable-warning=DEP0190' nitrostack-cli dev",
+    "build": "NODE_OPTIONS='--disable-warning=DEP0190' nitrostack-cli build",
+    "start": "npm run build && NODE_OPTIONS='--disable-warning=DEP0190' nitrostack-cli start",
+    "start:prod": "NODE_OPTIONS='--disable-warning=DEP0190' nitrostack-cli start",
+    "upgrade": "NODE_OPTIONS='--disable-warning=DEP0190' nitrostack-cli upgrade",
+    "install:all": "NODE_OPTIONS='--disable-warning=DEP0190' nitrostack-cli install",
+    "widget": "NODE_OPTIONS='--disable-warning=DEP0190' npm --prefix src/widgets"
   },
   "dependencies": {
     "@nitrostack/core": "^1",

@@ -1,5 +1,4 @@
 import { McpApp, Module, ConfigModule } from '@nitrostack/core';
-import { CalculatorModule } from './modules/calculator/calculator.module.js';
 import { InsuranceModule } from './modules/insurance/insurance.module.js';
 import { SystemHealthCheck } from './health/system.health.js';
 // Load environment variables
@@ -14,7 +13,7 @@ import 'dotenv/config';
 @McpApp({
   module: AppModule,
   server: {
-    name: 'calculator-server',
+    name: 'insurance-server',
     version: '1.0.0'
   },
   logging: {
